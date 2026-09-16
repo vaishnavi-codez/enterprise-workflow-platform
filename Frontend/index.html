@@ -1,0 +1,718 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Decision Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= WELCOME SCREEN ================= -->
+
+    <section id="welcomeScreen" class="screen active">
+
+        <div class="welcome-container">
+
+            <div class="brand-mark">
+                AD
+            </div>
+
+            <h1>AI Decision Hub</h1>
+
+            <p class="welcome-subtitle">
+                Enterprise Multi-Agent Decision Automation
+            </p>
+
+            <p class="welcome-description">
+                Plan, research, analyze and make decisions with an intelligent
+                multi-agent system powered by tools and persistent memory.
+            </p>
+
+            <button id="getStartedBtn" class="primary-button">
+                Get Started
+                <span>→</span>
+            </button>
+
+            <div class="capability-row">
+
+                <div class="capability">
+                    <span>01</span>
+                    <strong>Multi-Agent</strong>
+                    <small>Coordinated reasoning</small>
+                </div>
+
+                <div class="capability">
+                    <span>02</span>
+                    <strong>Tool Integration</strong>
+                    <small>Real-time information</small>
+                </div>
+
+                <div class="capability">
+                    <span>03</span>
+                    <strong>Persistent Memory</strong>
+                    <small>Context-aware conversations</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= AUTHENTICATION SCREEN ================= -->
+
+    <section id="authScreen" class="screen hidden">
+
+        <div class="auth-container">
+
+            <div class="auth-brand">
+
+                <div class="brand-mark small">
+                    AD
+                </div>
+
+                <span>AI Decision Hub</span>
+
+            </div>
+
+
+            <!-- ================= REGISTER ================= -->
+
+            <div id="registerView" class="auth-view">
+
+                <div class="auth-heading">
+
+                    <h1>Create your account</h1>
+
+                    <p>
+                        Start using intelligent multi-agent decision automation.
+                    </p>
+
+                </div>
+
+
+                <label for="registerUsername">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="registerUsername"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                >
+
+
+                <label for="registerPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Minimum 6 characters"
+                    autocomplete="new-password"
+                >
+
+
+                <button
+                    id="registerBtn"
+                    class="primary-button full"
+                    type="button"
+                >
+                    Create Account
+                </button>
+
+
+                <p id="registerMessage" class="message"></p>
+
+
+                <p class="switch-auth">
+
+                    Already have an account?
+
+                    <button
+                        id="showLoginBtn"
+                        class="text-button"
+                        type="button"
+                    >
+                        Sign in
+                    </button>
+
+                </p>
+
+            </div>
+
+
+            <!-- ================= LOGIN ================= -->
+
+            <div id="loginView" class="auth-view hidden">
+
+                <div class="auth-heading">
+
+                    <h1>Welcome back</h1>
+
+                    <p>
+                        Sign in to continue to your AI workspace.
+                    </p>
+
+                </div>
+
+
+                <label for="loginUsername">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="loginUsername"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                >
+
+
+                <label for="loginPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                >
+
+
+                <button
+                    id="loginBtn"
+                    class="primary-button full"
+                    type="button"
+                >
+                    Sign In
+                </button>
+
+
+                <p id="loginMessage" class="message"></p>
+
+
+                <p class="switch-auth">
+
+                    Don't have an account?
+
+                    <button
+                        id="showRegisterBtn"
+                        class="text-button"
+                        type="button"
+                    >
+                        Create account
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN APPLICATION ================= -->
+
+    <section id="appScreen" class="app-screen hidden">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <div class="brand-mark small">
+                    AD
+                </div>
+
+                <div>
+
+                    <strong>
+                        AI Decision Hub
+                    </strong>
+
+                    <small>
+                        Decision Automation
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="newChatBtn"
+                class="new-chat-button"
+                type="button"
+            >
+                <span>+</span>
+                New conversation
+            </button>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-label">
+                    CONVERSATIONS
+                </div>
+
+                <div
+                    id="conversationList"
+                    class="conversation-list"
+                >
+
+                    <div class="empty-conversations">
+                        No conversations yet
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="system-status">
+
+                    <span class="status-dot"></span>
+
+                    <div>
+
+                        <strong>
+                            System online
+                        </strong>
+
+                        <small>
+                            All services operational
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="logoutBtn"
+                    class="logout-button"
+                    type="button"
+                >
+                    Sign out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN WORKSPACE ================= -->
+
+        <main class="workspace">
+
+
+            <!-- ================= TOP BAR ================= -->
+
+            <header class="topbar">
+
+                <div class="mobile-brand">
+                    AI Decision Hub
+                </div>
+
+
+                <div class="user-area">
+
+                    <div
+                        class="user-avatar"
+                        id="userAvatar"
+                    >
+                        U
+                    </div>
+
+
+                    <div class="user-details">
+
+                        <strong id="currentUsername">
+                            User
+                        </strong>
+
+                        <span>
+                            Authenticated user
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ================= DASHBOARD ================= -->
+
+            <div
+                id="dashboardView"
+                class="workspace-view"
+            >
+
+                <div class="dashboard-content">
+
+
+                    <div class="dashboard-heading">
+
+                        <span class="eyebrow">
+                            AI WORKSPACE
+                        </span>
+
+                        <h1>
+                            <span id="welcomeName">
+                                Welcome
+                            </span>.
+                        </h1>
+
+                        <p>
+                            What would you like to solve today?
+                        </p>
+
+                    </div>
+
+
+                    <!-- Main Prompt -->
+
+                    <div class="prompt-card">
+
+                        <textarea
+                            id="dashboardQuestion"
+                            placeholder="Ask a question, solve a problem, or make a decision..."
+                        ></textarea>
+
+
+                        <div class="prompt-footer">
+
+                            <span>
+                                Multi-agent reasoning enabled
+                            </span>
+
+
+                            <button
+                                id="dashboardAskBtn"
+                                class="send-button"
+                                type="button"
+                            >
+                                Ask Agent
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Suggested Tasks -->
+
+                    <div class="suggestions">
+
+
+                        <button
+                            class="suggestion-card"
+                            data-question="What is the current weather in Hyderabad?"
+                            type="button"
+                        >
+
+                            <span class="suggestion-icon">
+                                01
+                            </span>
+
+                            <strong>
+                                Weather planning
+                            </strong>
+
+                            <small>
+                                Use real-time weather information
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="suggestion-card"
+                            data-question="I have a budget of ₹300000. Calculate the cost of 4 laptops at ₹65000 each and tell me the remaining amount."
+                            type="button"
+                        >
+
+                            <span class="suggestion-icon">
+                                02
+                            </span>
+
+                            <strong>
+                                Budget analysis
+                            </strong>
+
+                            <small>
+                                Calculate and evaluate a budget
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            class="suggestion-card"
+                            data-question="Help me plan a college event and identify the important decisions I need to make."
+                            type="button"
+                        >
+
+                            <span class="suggestion-icon">
+                                03
+                            </span>
+
+                            <strong>
+                                Decision planning
+                            </strong>
+
+                            <small>
+                                Break down a complex decision
+                            </small>
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- Architecture -->
+
+                    <div class="architecture-section">
+
+                        <div class="section-title">
+
+                            <span>
+                                HOW IT WORKS
+                            </span>
+
+                        </div>
+
+
+                        <div class="agent-flow">
+
+
+                            <div class="agent-step">
+
+                                <span>01</span>
+
+                                <strong>
+                                    Planning
+                                </strong>
+
+                                <small>
+                                    Breaks down the request
+                                </small>
+
+                            </div>
+
+
+                            <div class="flow-line"></div>
+
+
+                            <div class="agent-step">
+
+                                <span>02</span>
+
+                                <strong>
+                                    Research
+                                </strong>
+
+                                <small>
+                                    Uses tools and information
+                                </small>
+
+                            </div>
+
+
+                            <div class="flow-line"></div>
+
+
+                            <div class="agent-step">
+
+                                <span>03</span>
+
+                                <strong>
+                                    Analysis
+                                </strong>
+
+                                <small>
+                                    Evaluates the findings
+                                </small>
+
+                            </div>
+
+
+                            <div class="flow-line"></div>
+
+
+                            <div class="agent-step">
+
+                                <span>04</span>
+
+                                <strong>
+                                    Decision
+                                </strong>
+
+                                <small>
+                                    Produces the final answer
+                                </small>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CHAT VIEW ================= -->
+
+            <div
+                id="chatView"
+                class="workspace-view hidden"
+            >
+
+
+                <!-- Chat Header -->
+
+                <div class="chat-header">
+
+                    <div>
+
+                        <button
+                            id="backToDashboardBtn"
+                            class="back-button"
+                            type="button"
+                        >
+                            ← Dashboard
+                        </button>
+
+                        <h2>
+                            AI Agent
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        id="chatNewBtn"
+                        class="outline-button"
+                        type="button"
+                    >
+                        + New conversation
+                    </button>
+
+                </div>
+
+
+                <!-- Chat Messages -->
+
+                <div
+                    id="chatMessages"
+                    class="chat-messages"
+                >
+
+                    <div class="empty-chat">
+
+                        <div class="empty-chat-mark">
+                            AD
+                        </div>
+
+                        <h2>
+                            How can I help you?
+                        </h2>
+
+                        <p>
+                            Ask a question and let the multi-agent system
+                            research, analyze and make a decision.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Chat Input -->
+
+                <div class="chat-input-area">
+
+                    <div class="chat-input-box">
+
+                        <textarea
+                            id="chatQuestion"
+                            placeholder="Ask the AI agent..."
+                            rows="1"
+                        ></textarea>
+
+
+                        <button
+                            id="sendChatBtn"
+                            class="send-chat-button"
+                            type="button"
+                        >
+                            ↑
+                        </button>
+
+                    </div>
+
+
+                    <small>
+                        AI Decision Hub uses multi-agent reasoning,
+                        tools and memory.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- ================= LOADING OVERLAY ================= -->
+
+    <div
+        id="loadingOverlay"
+        class="loading-overlay hidden"
+    >
+
+        <div class="loader"></div>
+
+        <strong>
+            Working on your request
+        </strong>
+
+        <span>
+            Planning → Research → Analysis → Decision
+        </span>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
